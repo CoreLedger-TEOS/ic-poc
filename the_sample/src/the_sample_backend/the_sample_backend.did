@@ -1,0 +1,22 @@
+type Asset = record {
+    "issuer": principal;
+    "amendment_count": nat32;
+    "created_on": nat64;
+};
+
+type AssetUpdate = record {
+    "asset_id": nat;
+    "event_id": nat16;
+}
+
+service : {
+    "hello": () -> (text);
+    "createAsset": (text) -> ();
+    "getAsset": (text) -> (Asset) query;
+    "getEvent": (nat64) -> (AssetUpdate) query;
+    "getEventCount": () -> (nat64) query;
+    "createTokens": (text, nat) -> ();
+    "totalTokens": (text) -> (nat) query;
+    "account": (principal, text) -> (nat) query;
+    "transfer": (principal, principal, text, nat) -> ();
+};
